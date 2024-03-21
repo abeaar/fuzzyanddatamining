@@ -1,0 +1,40 @@
+[System]
+Name='fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='pelayanan'
+Range=[0 10]
+NumMFs=3
+MF1='mengecewakan':'gaussmf',[1 2.07330866807611]
+MF2='bagus':'gaussmf',[2.123 5]
+MF3='memuaskan':'gaussmf',[0.9126 7.895]
+
+[Input2]
+Name='makanan'
+Range=[0 10]
+NumMFs=2
+MF1='hambar':'trimf',[-4.167 0 6]
+MF2='enak':'trimf',[4 10 14.2]
+
+[Output1]
+Name='bonus'
+Range=[0 30]
+NumMFs=3
+MF1='sedikit':'trimf',[0 5 10]
+MF2='sedang':'trimf',[10 15 20]
+MF3='banyak':'trimf',[20 25 30]
+
+[Rules]
+1 2, 2 (1) : 1
+3 -1, 3 (1) : 1
+2 -2, 2 (1) : 1
